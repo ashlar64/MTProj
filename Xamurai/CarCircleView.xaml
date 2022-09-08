@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+	x:Class="Xamurai.CarCircleView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	<ContentView.GestureRecognizers>
+		<TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+	</ContentView.GestureRecognizers>
+
+	<ContentView.Content>
+		<Frame
+			x:Name="_borderOuter"
+			Padding="1"
+			BackgroundColor="{Binding Color}"
+			BorderColor="{Binding Color}"
+			HasShadow="False">
+			<Frame
+				x:Name="_borderInner"
+				Padding="5"
+				BorderColor="{Binding Color}"
+				HasShadow="False">
+				<Label
+					Margin="1,-1,0,0"
+					FontAttributes="Bold"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center"
+					Text="{Binding Abbreviation}"
+					VerticalOptions="Center"
+					VerticalTextAlignment="Center" />
+			</Frame>
+		</Frame>
+
+	</ContentView.Content>
+</ContentView>

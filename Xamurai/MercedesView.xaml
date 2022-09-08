@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="Xamurai.MercedesView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamurai"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Name="_mercedesView"
+             BackgroundColor="White">
+
+    <ContentView.Resources>
+        <Style  TargetType="Frame" ApplyToDerivedTypes="True">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#F7D6D6" Offset="0.1" />
+                    <GradientStop Color="#7B7676" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+		<Grid>
+            <Frame Margin="5,15,5,5" x:Name="carViewGrid1"
+			       BorderColor="LightGray"
+			       CornerRadius="5"
+			       HasShadow="False">
+
+                    <Grid IsVisible="{Binding IsExpanded, Source={x:Reference _mercedesView}}" >
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+
+                        <Label x:Name="notesLabel" HorizontalOptions="End"
+						       Text="{Binding Notes}"
+						       TextColor="Gray" />
+                        <Label x:Name="descriptionLabel" Grid.Row="1" Text="{Binding Description}" FontFamily="OpenSansExtraBoldItalic" />
+					</Grid>
+			</Frame>
+			<StackLayout Margin="20,0,0,0"
+			             BackgroundColor="#F2E8E8"
+			             HorizontalOptions="Start"
+			             Orientation="Horizontal"
+			             VerticalOptions="Start">
+				<local:CarCircleView Margin="7,0,0,0"
+                                    
+				                     Command="{Binding ToggleCollapseCommand, Source={x:Reference _mercedesView}}"
+				                     HeightRequest="30"
+				                     HorizontalOptions="Start"
+				                     VerticalOptions="Start"
+				                     WidthRequest="30" />
+				<Label Margin="0,0,7,0"
+				       FontAttributes="Bold"
+				       Text="{Binding Name}"
+				       VerticalTextAlignment="Center" />
+			</StackLayout>
+
+            <Grid x:Name="longPressedGrid" BackgroundColor="Transparent" IsVisible="{Binding LandscapeMode}" xct:TouchEffect.Command="{Binding LongPressCommand, Source={x:Reference _mercedesView}}">
+            </Grid>
+
+		</Grid>
+	</ContentView.Content>
+</ContentView>

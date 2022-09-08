@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="Xamurai.FlexLayoutPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:Xamurai">
+	<ContentPage.Content>
+		<Grid>
+			<ScrollView Orientation="Horizontal">
+				<FlexLayout
+					AlignContent="Start"
+					AlignItems="Center"
+					BindableLayout.ItemsSource="{Binding Cars}"
+					Direction="Column"
+					JustifyContent="Start"
+					Wrap="Wrap">
+					<BindableLayout.ItemTemplate>
+						<DataTemplate>
+							<local:CarView>
+								<local:CarView.WidthRequest>
+									<OnIdiom
+										x:TypeArguments="x:Double"
+										Phone="200"
+										Tablet="400" />
+								</local:CarView.WidthRequest>
+
+							</local:CarView>
+						</DataTemplate>
+					</BindableLayout.ItemTemplate>
+				</FlexLayout>
+			</ScrollView>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

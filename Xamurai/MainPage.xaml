@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Xamurai.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="_mainPage"
+             Title="Xamarin FTW!">
+
+	<StackLayout>
+		<Button Command="{Binding OpenListViewCommand}" Text="List View (Challenge #2)" />
+		<Button Command="{Binding OpenCollectionViewCommand}" Text="Collection View" />
+		<Button Command="{Binding OpenCarouselViewCommand}" Text="Carousel View" />
+		<Button Command="{Binding OpenFlexLayoutViewCommand}" Text="Flex Layout View" />
+		<Button Command="{Binding OpenPagedCollectionViewCommand}" Text="Challenge #1: Paged Collection View" />
+	</StackLayout>
+
+</ContentPage>

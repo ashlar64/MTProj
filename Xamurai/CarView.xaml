@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="Xamurai.CarView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamurai"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Name="_carView"
+             BackgroundColor="White">
+	<ContentView.Content>
+
+        <Grid x:Name="myGrid">
+            <Frame Margin="5,15,5,5"
+			       BorderColor="LightGray"
+			       CornerRadius="5"
+			       HasShadow="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label x:Name="notesLabel" HorizontalOptions="End"
+						       Text="{Binding Notes}"
+			 FontFamily="OpenSans"
+						       TextColor="Gray" />
+                        <Label x:Name="descriptionLabel" Grid.Row="1" Text="{Binding Description}" />
+                    </Grid>
+                </Grid>
+            </Frame>
+            <StackLayout Margin="20,0,0,0"
+			             BackgroundColor="White"
+			             HorizontalOptions="Start"
+			             Orientation="Horizontal"
+			             VerticalOptions="Start">
+                <local:CarCircleView Margin="7,0,0,0"
+				                     Command="{Binding ToggleCollapseCommand, Source={x:Reference _carView}}"
+				                     HeightRequest="30"
+				                     HorizontalOptions="Start"
+				                     VerticalOptions="Start"
+				                     WidthRequest="30" />
+                <Label Margin="0,0,7,0"
+				       FontAttributes="Bold"
+				       Text="{Binding Name}"
+				       VerticalTextAlignment="Center" />
+            </StackLayout>
+
+            <Grid x:Name="longPressGrid" BackgroundColor="Transparent" IsVisible="{Binding LandscapeMode}" xct:TouchEffect.LongPressCommand="{Binding LongPressCommand, Source={x:Reference _carView}}">
+
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

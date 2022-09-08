@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="Xamurai.CollectionViewPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:Xamurai">
+	<ContentPage.Content>
+		<Grid>
+			<!--  CollectionView to be used for paging  -->
+			<CollectionView
+				x:Name="CV"
+				ItemSizingStrategy="MeasureAllItems"
+				ItemsSource="{Binding Cars}"
+				SelectionMode="None">
+				<CollectionView.ItemsLayout>
+					<!--  BUG (pre8) binding to viewmodel "GridSpan" property for Span doesn't seem to work  -->
+					<GridItemsLayout
+						Orientation="Horizontal"
+						SnapPointsAlignment="Start"
+						SnapPointsType="Mandatory"
+						Span="2" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<!--  BUG (pre7): seems to be binding to page BindingContext, and not Section  -->
+						<local:CarView Padding="0,10,0,0" WidthRequest="200" />
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>
